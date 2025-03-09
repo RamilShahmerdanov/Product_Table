@@ -1,0 +1,203 @@
+.mainbody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tablecontainer {
+  width: 80%; /* Cədvəl üçün səhifənin 90%-lik genişliyində olmasını təmin edirik */
+  margin: 30px auto; /* Cədvəlin ətrafında margin, səhifənin ortasında yerləşməsi */
+  padding: 20px; /* Cədvəl ətrafında boşluq */
+  background-color: #f8f9fa; /* Cədvəl konteynerinin arxa fonu açıq boz */
+  border-radius: 10px; /* Kənarları yuvarlaqlaşdırır */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Yüngül kölgə cədvəlinin daha vizual cəlbedici görünməsini təmin edir */
+}
+
+.table {
+  width: 100%; /* Cədvəl genişliyi konteynerin tam genişliyini əhatə edir */
+  border-collapse: collapse; /* Sıx və sıx yerləşən hüceyrələr */
+}
+
+.table th,
+.table td {
+  padding: 15px; /* Hüceyrələr arasında padding */
+  text-align: center; /* Mətni ortada yerləşdirir */
+  font-size: 16px; /* Yazı ölçüsü */
+}
+
+.table th {
+  background-color: #007bff; /* Başlıqların fon rəngi mavi */
+  color: white; /* Başlıqların yazısı ağ */
+  font-weight: bold; /* Başlıqlar qalın */
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Hər ikinci sətir üçün açıq boz fon */
+}
+
+.table tr:hover {
+  background-color: #e9ecef; /* Üzərində siçanla üzərinə getdikdə fon rəngi dəyişir */
+}
+
+.tableimg {
+  width: 50px;
+  height: 50px;
+  object-fit: cover; /* Şəkilin nisbətini qorumaq */
+  border-radius: 5px;
+}
+
+.totalsum {
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.totalsum p {
+  margin: 0;
+  padding: 5px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+button {
+  padding: 5px 12px;
+  border: none;
+
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btndec {
+  background-color: rgb(244, 7, 7);
+  border-radius: 8px;
+  margin-right: 5px;
+}
+.btninc {
+  background-color: rgb(23, 244, 7);
+  border-radius: 8px;
+  margin-left: 5px;
+}
+.delbtn{
+  background-color: rgb(244, 7, 7) !important;
+
+}
+
+
+
+button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: #6c757d;
+}
+
+button:focus {
+  outline: none; /* Fokusa gəldikdə kənar xətti (outline) yoxdur */
+}
+
+.cart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.cartin {
+  width: 230px;
+  height: 400px; /* Kartın sabit hündürlüyü */
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Düzgün bərabər paylanma */
+  align-items: center;
+  box-sizing: border-box; /* Border və paddingin ölçüyə daxil olması */
+}
+
+.cartin h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  flex-shrink: 0; /* H3 elementinin kiçiləməsini qarşısını alır */
+}
+.cartin:hover {
+  transform: translateY(-10px); /* Hover zamanı kiçik yuxarıya hərəkət */
+}
+
+.cartin img {
+  width: 100%; /* Şəkil kartın ölçüsünə uyğun olacaq */
+  height: 150px; /* Sabit hündürlük */
+  object-fit: cover; /* Şəkilin nisbətini qoruyur */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.cartin p {
+  font-size: 14px;
+  margin: 5px 0;
+  flex-shrink: 0; /* Textin kiçiləməməsi */
+}
+
+.cartin button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Yalnız düymə kartın ən altına yerləşəcək */
+}
+
+.cartin button:hover {
+  background-color: #0056b3;
+}
+
+.cartin button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.cartin button:disabled:hover {
+  background-color: #6c757d;
+}
+
+.cartcontainer {
+  width: 95%;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.imges {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.cartin button {
+  background-color: rgb(70, 233, 70);
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 7px;
+  color: wheat;
+}
+.totalsum {
+  display: flex;
+  justify-content: flex-end; /* Sağ tərəfə aparır */
+  font-weight: bold;
+  padding-right: 20px;
+}
