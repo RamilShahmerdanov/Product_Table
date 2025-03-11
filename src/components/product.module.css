@@ -225,4 +225,9 @@ button:focus {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-
+.loading {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20%;
+}
