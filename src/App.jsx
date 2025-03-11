@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import "./index.css";
 import styles from "./components/product.module.css";
@@ -8,10 +6,18 @@ import CartTable from "./components/CartTable";
 import Productcarts from "./components/Productcarts";
 
 function App() {
-  const [selectedProducts, setSelectedProducts] = useState(() => {
+  const [sort, setSort] = useState("");
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // ⬅️ İlk yüklənmə üçün loading
+
+  useEffect(() => {
+    // İlk dəfə səhifə açılarkən localStorage-dən məlumatı oxuyur
     const addedProd = localStorage.getItem("addedproduct");
-    return addedProd ? JSON.parse(addedProd) : [];
-  });
+    if (addedProd) {
+      setSelectedProducts(JSON.parse(addedProd));
+    }
+    setTimeout(() => setLoading(false), 1000); // ⬅️ Loading-i 1 saniyə saxla
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("addedproduct", JSON.stringify(selectedProducts));
@@ -30,7 +36,6 @@ function App() {
     });
   };
 
-  // Məhsul sayını artırmaq
   const increaseCount = (productId) => {
     setSelectedProducts((prev) =>
       prev.map((product) =>
@@ -41,7 +46,6 @@ function App() {
     );
   };
 
-  // Məhsul sayını azaltmaq
   const decreaseCount = (productId) => {
     setSelectedProducts((prev) =>
       prev.map((product) =>
@@ -56,26 +60,10 @@ function App() {
     setSelectedProducts((prev) =>
       prev.filter((product) => product.id !== productId)
     );
-    console.log("productId", productId);
   };
 
-  function incrementFunc(pokemon) {
-    setTeam(
-      team.map((p) => (p.id === pokemon.id ? { ...p, count: p.count + 1 } : p))
-    );
-  }
-
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setLoading(true); // Data yüklənməyə başlayır
-    setTimeout(() => {
-      setLoading(false); // 1 saniyədən sonra loading false olur
-    }, 1000);
-    localStorage.setItem("addedproduct", JSON.stringify(selectedProducts));
-  }, [selectedProducts]);
-
   if (loading) {
-    return <h2 className={styles.loading}>Loading...</h2>; // ⬅️ Ekranda Loading göstər
+    return <h2 className={styles.loading}>Loading...</h2>; // ⬅️ İlk açılışda loading göstər
   }
 
   return (
@@ -85,9 +73,17 @@ function App() {
         <CartTable
           selectedProducts={selectedProducts}
           removeProduct={removeProduct}
-          increaseCount={increaseCount} // Sayı artıran funksiyanı ötür
-          decreaseCount={decreaseCount} // Sayı azaldan funksiyanı ötür
+          increaseCount={increaseCount}
+          decreaseCount={decreaseCount}
         />
+        <h1>Product Cards</h1>
+        <select onChange={(e) => setSort(e.target.value)}>
+          <option value="">Select Sorting</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-hight">Price: High to Low</option>
+          <option value="Raiting-low">Rating: Low to High</option>
+          <option value="Raiting-hight">Rating: High to Low</option>
+        </select>
 
         <Productcarts
           addToTable={addToTable}
