@@ -10,11 +10,12 @@ import Productcarts from "./components/Productcarts";
 function App() {
   const [selectedProducts, setSelectedProducts] = useState(() => {
     const addedProd = localStorage.getItem("addedproduct");
-    return addedProd ? JSON.parse(addedProd) : []});
+    return addedProd ? JSON.parse(addedProd) : [];
+  });
 
-    useEffect(() => {
-      localStorage.setItem("addedproduct", JSON.stringify(selectedProducts));
-    }, [selectedProducts]);
+  useEffect(() => {
+    localStorage.setItem("addedproduct", JSON.stringify(selectedProducts));
+  }, [selectedProducts]);
 
   const addToTable = (product) => {
     setSelectedProducts((prev) => {
@@ -74,7 +75,7 @@ function App() {
           increaseCount={increaseCount} // Sayı artıran funksiyanı ötür
           decreaseCount={decreaseCount} // Sayı azaldan funksiyanı ötür
         />
-        <h1>Product Cards</h1>
+      
 
         <Productcarts
           addToTable={addToTable}

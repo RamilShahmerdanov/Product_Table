@@ -11,6 +11,7 @@ function Cart({ products,addToTable ,selectedProducts}) {
   return (
     <>
       <div className={styles.cart}>
+        
         {products.map((product) => (
           <div className={styles.cartin} key={product.id}>
             <h3>{product.title}</h3>
