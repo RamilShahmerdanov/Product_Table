@@ -2,9 +2,8 @@ import styles from "./product.module.css";
 import React, { useEffect, useState } from "react";
 
 import { Getproducts } from "../services/Api";
-// import Cart from "./cart";
+import Cart from "./cart";
 import Cart from "./cart.jsx";
-
 
 function Productcarts({ addToTable, selectedProducts }) {
   const [products, setProducts] = useState([]);
